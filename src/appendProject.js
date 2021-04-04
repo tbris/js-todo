@@ -1,6 +1,6 @@
+import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
 import { batchAppendTodo } from "./appendTodo";
-import { todosContainer } from "./domContainers";
 
 function makeProject(projectObj) {
   let item = document.createElement("div");
@@ -11,7 +11,7 @@ function makeProject(projectObj) {
 }
 
 function showTodos(e) {
-  batchAppendTodo(todosContainer, e.target.dataset.projectId)
+  batchAppendTodo(Containers.todo, e.target.dataset.projectId)
 }
 
 function appendProject(container, projectObj) {

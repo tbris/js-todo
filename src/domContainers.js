@@ -1,4 +1,7 @@
-let projectsContainer = document.getElementById("project-list");
-let todosContainer = document.getElementById("todo-list");
+const Containers = {
+  project: document.getElementById("project-list"),
+  projectForm: document.getElementById("new-project"),
+  todo: document.getElementById("todo-list"),
+}
 
-export { projectsContainer, todosContainer };
+export default Containers;
