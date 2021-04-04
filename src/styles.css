@@ -1,0 +1,44 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  line-height: 1;
+}
+
+#application {
+  height: 100%;
+  display: flex;
+  max-width: 600px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+#banner {
+  height: 100px;
+  background: #0f0;
+}
+
+#project-list {
+  height: 70px;
+  background: #00f0ff;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+}
+
+.project-item {
+  box-sizing: border-box;
+  padding: 0.5rem;
+}
+
+#todo-list {
+  background: #f0f;
+  flex: 1;
+}

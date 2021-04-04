@@ -1,6 +1,7 @@
 import Todo from "./todoFactory";
 
 let projectCount = 0;
+let projectList = {};
 
 const projectProto = {
   addTodo(title, description, priority, date) {
@@ -12,9 +13,12 @@ const projectProto = {
 };
 
 const Project = (name) => {
-  return Object.assign(Object.create(projectProto), {
-    id: projectCount++, name, todos: {}, count: 0
+  let projectId = projectCount++;
+  let project = Object.assign(Object.create(projectProto), {
+    id: projectId, name, todos: {}, count: 0
   });
-}
+  projectList[projectId] = project;
+  return project
+};
 
-export default Project;
+export { Project, projectList };
