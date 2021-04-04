@@ -42,3 +42,16 @@ body {
   background: #f0f;
   flex: 1;
 }
+
+.todo-item {
+  box-sizing: border-box;
+  padding: 1rem;
+  background: silver;
+  display: flex;
+}
+
+.todo-title {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex: 1;
+}

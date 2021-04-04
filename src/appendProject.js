@@ -1,5 +1,3 @@
-import { projectList } from "./projectFactory";
-
 function makeProject(projectObj) {
   let item = document.createElement("div");
   item.textContent = projectObj.name
@@ -7,10 +5,8 @@ function makeProject(projectObj) {
   return item;
 }
 
-function appendProject(container) {
-  for (const key in projectList) {
-    container.append(makeProject(projectList[key]));
-  }
+function appendProject(container, projectObj) {
+  container.append(makeProject(projectObj));
 }
 
 export { appendProject };

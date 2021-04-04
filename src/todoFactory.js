@@ -1,8 +1,8 @@
 const todoProto = {}
 
-const Todo = (title, description, importance, date) => {
+const Todo = (title, description, priority, date) => {
   return Object.assign(Object.create(todoProto), {
-    title, description, importance, date
+    title, description, priority, date
   })
 }
 
