@@ -33,6 +33,10 @@ body {
   padding: 0 1rem;
 }
 
+[class$="-item"] {
+  cursor: pointer;
+}
+
 .project-item {
   box-sizing: border-box;
   padding: 0.5rem;

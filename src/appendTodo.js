@@ -1,30 +1,18 @@
-function makePriority(priority) {
-  let priorityProp = document.createElement("span");
-  priorityProp.classList.add("todo-priority");
-  priorityProp.textContent = priority;
-  return priorityProp
-}
+import { projectList } from "./projectFactory";
 
-function makeTitle(title) {
-  let titleProp = document.createElement("span");
-  titleProp.classList.add("todo-title");
-  titleProp.textContent = title;
-  return titleProp;
-}
-
-function makeDate(date) {
-  let dateProp = document.createElement("span");
-  dateProp.classList.add("todo-date");
-  dateProp.textContent = date;
-  return dateProp;
+function makeProperty(todoClass, content) {
+  let property = document.createElement("span");
+  property.classList.add(todoClass);
+  property.textContent = content;
+  return property;
 }
 
 function makeTodo(todoObj) {
   let item = document.createElement("div");
   item.classList.add("todo-item");
-  item.append(makePriority(todoObj.priority));
-  item.append(makeTitle(todoObj.title));
-  item.append(makeDate(todoObj.date));
+  item.append(makeProperty("todo-priority", todoObj.priority));
+  item.append(makeProperty("todo-title", todoObj.title));
+  item.append(makeProperty("todo-date", todoObj.date));
   return item;
 }
 
@@ -32,4 +20,12 @@ function appendTodo(container, todoObj) {
   container.append(makeTodo(todoObj));
 }
 
-export { appendTodo };
+function batchAppendTodo(container, projectId) {
+  container.innerHTML = "";
+  let project = projectList[projectId];
+  for (const key in project.todos) {
+    appendTodo(container, project.todos[key]);
+  }
+}
+
+export { appendTodo, batchAppendTodo };
