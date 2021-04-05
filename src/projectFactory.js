@@ -2,7 +2,7 @@ import Todo from "./todoFactory";
 
 export { Project, projectList, projectProto };
 
-let projectCount = 0;
+let projectCount = 1;
 let projectList = {};
 
 const projectProto = {

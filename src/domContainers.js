@@ -1,5 +1,3 @@
-export default Containers;
-
 const Containers = {
   project: document.getElementById("project-list"),
   projectForm: document.getElementById("new-project"),
@@ -9,3 +7,5 @@ const Containers = {
   sidebarClose: document.getElementById("sidebar-close"),
   sidebarOpen: document.getElementById("sidebar-open")
 }
+
+export default Containers;
