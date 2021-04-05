@@ -1,0 +1,34 @@
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label, ul, li,
+input, button, textarea {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+body {
+  line-height: 1;
+}
+
+body, body * {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar, body *::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}

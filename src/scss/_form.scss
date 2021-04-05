@@ -1,0 +1,24 @@
+.form-action {
+  border: 0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+}
+
+textarea.form-action {
+  width: 100%;
+  resize: vertical;
+  min-height: 3rem;
+  max-height: 10.5rem;
+}
+
+.form-button {
+  border: 2px solid black;
+  padding: 0.4rem;
+  font-size: 1rem;
+  &:hover {
+    background: var(--theme-hover);
+  }
+}
+
+@import "./_form-priority.scss"

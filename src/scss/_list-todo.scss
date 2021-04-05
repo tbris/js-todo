@@ -1,0 +1,21 @@
+#todo-list {
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.todo-item {
+  cursor: pointer;
+  padding: 1rem;
+  border-bottom: 1px solid #aaa;
+  border-radius: 7px;
+  display: flex;
+  &:hover {
+    background: var(--theme-hover);
+  }
+}
+
+.todo-title {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex: 1;
+}

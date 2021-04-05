@@ -1,0 +1,64 @@
+$lp-color: #ffdac1;
+$mp-color: #ffb7b2;
+$hp-color: #ff9aa2;
+$border-props: 4px solid #c7ceea;
+
+#todo-priority {
+  position: relative;
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+  li {
+    position: relative;
+    list-style: none;
+    flex: 1;
+    label {
+      position: relative;
+      cursor: pointer;
+    }
+  }
+}
+
+.priority-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.priority-box {
+  height: 45px;
+  border-top: $border-props;
+  border-bottom: $border-props;
+  transition: 0.3s;
+}
+
+#priority-low {
+  background: $lp-color;
+  border-left: $border-props;
+  &:hover {
+    background: darken($lp-color, 10%);
+  }
+  .priority-checkbox:checked + & {
+    background: darken($lp-color, 15%);
+  }
+}
+
+#priority-medium {
+  background: $mp-color;
+  &:hover {
+    background: darken($mp-color, 10%);
+  }
+  .priority-checkbox:checked + & {
+    background: darken($mp-color, 15%);
+  }
+}
+
+#priority-high {
+  background: $hp-color;
+  border-right: $border-props;
+  &:hover {
+    background: darken($hp-color, 10%);
+  }
+  .priority-checkbox:checked + & {
+    background: darken($hp-color, 15%);
+  }
+}
