@@ -22,12 +22,21 @@ function appendTodo(container, todoObj) {
   container.scrollTop = container.scrollHeight;
 }
 
-function batchAppendTodo(container, projectId) {
-  container.innerHTML = "";
+function batchAppendTodo(container, projectId, noClear=false) {
+  if (!noClear) container.innerHTML = "";
   let project = projectList[projectId];
   for (const key in project.todos) {
     appendTodo(container, project.todos[key]);
   }
 }
 
-export { appendTodo, batchAppendTodo };
+function appendAllTodo(container) {
+  container.innerHTML = "";
+  for (const i in projectList) {
+    for (const y in projectList[i].todos) {
+      appendTodo(container, projectList[i].todos[y]);
+    }
+  }
+}
+
+export { appendTodo, batchAppendTodo, appendAllTodo };

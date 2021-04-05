@@ -1,7 +1,10 @@
 $lp-color: #ffdac1;
 $mp-color: #ffb7b2;
 $hp-color: #ff9aa2;
-$border-props: 4px solid #c7ceea;
+
+#todo-priority-cont {
+  margin: 0.5rem 0 1.3rem 0;
+}
 
 #todo-priority {
   position: relative;
@@ -26,14 +29,11 @@ $border-props: 4px solid #c7ceea;
 
 .priority-box {
   height: 45px;
-  border-top: $border-props;
-  border-bottom: $border-props;
   transition: 0.3s;
 }
 
 #priority-low {
   background: $lp-color;
-  border-left: $border-props;
   &:hover {
     background: darken($lp-color, 10%);
   }
@@ -54,7 +54,6 @@ $border-props: 4px solid #c7ceea;
 
 #priority-high {
   background: $hp-color;
-  border-right: $border-props;
   &:hover {
     background: darken($hp-color, 10%);
   }

@@ -12,12 +12,10 @@ input, button, textarea {
   box-sizing: border-box;
 }
 
-button {
+button, input[type="submit"] {
   cursor: pointer;
   border: 0;
   background: none;
-  padding: 0.5rem 1rem;
-  font-size: 1.5rem;
 }
 
 body {

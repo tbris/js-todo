@@ -23,4 +23,8 @@ const Project = (name) => {
   return project
 };
 
+projectList["default"] = Object.assign(Object.create(projectProto), {
+  id: "default", name: "default", todos: {}, count: 0
+});
+
 export { Project, projectList };

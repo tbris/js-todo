@@ -7,15 +7,13 @@ function getRadioPriority(collection) {
 }
 
 function parsedProps(target) {
-  let a= {
+  return {
     container: target.todoContainer.value,
     title: target.todoTitle.value,
     description: target.todoDescription.value,
     priority: getRadioPriority(Array.from(target.todoPriority)).value,
     date: target.todoDate.value
   };
-  console.log(a)
- return a
 }
 
 function buildTodo(props) {
