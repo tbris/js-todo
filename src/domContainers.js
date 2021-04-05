@@ -4,8 +4,8 @@ const Containers = {
   todo: document.getElementById("todo-list"),
   todoForm: document.getElementById("new-todo"),
   sidebar: document.getElementById("action-sidebar"),
-  sidebarClose: document.getElementById("sidebar-close"),
-  sidebarOpen: document.getElementById("sidebar-open")
+  sidebarClose: document.querySelector(".sidebar-close-button"),
+  sidebarOpen: document.querySelector(".sidebar-open-button")
 }
 
 export default Containers;

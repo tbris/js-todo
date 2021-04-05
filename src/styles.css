@@ -9,11 +9,16 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label {
 
 body {
   line-height: 1;
+  --theme: #fff;
+  --theme-hover: #eaeaea;
+}
+
+body, body * {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
 
-body::-webkit-scrollbar {
+body::-webkit-scrollbar, body *::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
 
@@ -24,12 +29,13 @@ body::-webkit-scrollbar {
 
 #project-list {
   min-height: 70px;
-  background: #00f0ff;
-  display: flex;
-  flex-wrap:wrap;
-  align-items: center;
   font-size: 1.5rem;
   padding: 0 1rem;
+  max-height: 175px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 [class$="-item"] {
@@ -37,21 +43,34 @@ body::-webkit-scrollbar {
 }
 
 .project-item {
-  box-sizing: border-box;
-  padding: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+#todo-list {
+  max-height: 90%;
+  overflow-y: scroll;
 }
 
 .todo-item {
   box-sizing: border-box;
   padding: 1rem;
-  background: silver;
+  border-bottom: 1px solid #aaa;
+  border-radius: 7px;
   display: flex;
+}
+
+.todo-item:hover {
+  background: var(--theme-hover);
 }
 
 .todo-title {
   padding-left: 1rem;
   padding-right: 1rem;
   flex: 1;
+}
+
+#topbar {
+  position: sticky;
 }
 
 #action-sidebar {
@@ -61,7 +80,7 @@ body::-webkit-scrollbar {
   z-index: 1;
   top: 0;
   left: 0;
-  background: red;
+  background: var(--theme);
   overflow-x: hidden;
   transition: 0.5s;
 }
@@ -70,9 +89,47 @@ body::-webkit-scrollbar {
   transition: 0.3s;
 }
 
-#sidebar-close {
+[class$="-button"] {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-family: inherit;
+}
+
+.sidebar-close-button {
   position: absolute;
   top: 0;
   right: 0;
-  font-size: 1.5rem;
+  background: var(--theme);
+}
+
+#action-sidebar > form {
+  margin: 1rem;
+}
+
+.form-action {
+  border: 0;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-family: inherit;
+}
+
+textarea.form-action {
+  width: 100%;
+  resize: vertical;
+  min-height: 3rem;
+  max-height: 10.5rem;
+}
+
+.form-button {
+  border: 2px solid black;
+  padding: 0.4rem;
+  font-size: 1rem;
+}
+
+.form-button:hover {
+  background: var(--theme-hover);
 }

@@ -13,11 +13,13 @@ function makeTodo(todoObj) {
   item.append(makeProperty("todo-priority", todoObj.priority));
   item.append(makeProperty("todo-title", todoObj.title));
   item.append(makeProperty("todo-date", todoObj.date));
+  item.tabIndex = "0";
   return item;
 }
 
 function appendTodo(container, todoObj) {
   container.append(makeTodo(todoObj));
+  container.scrollTop = container.scrollHeight;
 }
 
 function batchAppendTodo(container, projectId) {

@@ -7,6 +7,7 @@ function makeProject(projectObj) {
   item.dataset.projectId = projectObj.id;
   item.textContent = projectObj.name
   item.classList.add("project-item");
+  item.tabIndex = "0";
   return item;
 }
 
@@ -24,6 +25,7 @@ function appendProject(container, projectObj) {
   let project = makeProject(projectObj);
   project.addEventListener("click", showTodos);
   container.append(project);
+  container.scrollTop = container.scrollHeight;
 }
 
 function batchAppendProject(container) {
