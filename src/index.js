@@ -5,7 +5,6 @@ import { batchAppendTodo } from "./appendTodo";
 import "./projectForm";
 import "./todoForm";
 import "./domSidebar";
-import "./styles.css";
 import { seed } from "./seed";
 
 seed();
