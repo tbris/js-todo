@@ -9,19 +9,17 @@ html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label {
 
 body {
   line-height: 1;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 
 #application {
-  height: 100%;
-  display: flex;
   max-width: 600px;
   margin: 0 auto;
-  flex-direction: column;
-}
-
-#banner {
-  height: 100px;
-  background: #0f0;
 }
 
 #project-list {
@@ -41,11 +39,6 @@ body {
 .project-item {
   box-sizing: border-box;
   padding: 0.5rem;
-}
-
-#todo-list {
-  background: #f0f;
-  flex: 1;
 }
 
 .todo-item {

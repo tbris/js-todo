@@ -5,7 +5,9 @@ let projectList = {};
 
 const projectProto = {
   addTodo(title, description, priority, date) {
-    this.todos[this.count++] = Todo(title, description, priority, date);
+    let todo = Todo(title, description, priority, date);
+    this.todos[this.count++] = todo;
+    return todo;
   },
   removeTodo(id) {
     delete this.todos[id];

@@ -1,16 +1,16 @@
-import Containers from "./domContainers"
+import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
-import { appendProject } from "./appendProject";
+import { batchAppendProject, markHiddenInput } from "./appendProject";
 import { batchAppendTodo } from "./appendTodo";
 import "./projectForm";
-import { seed } from "./seed";
+import "./todoForm";
 import "./styles.css";
+import { seed } from "./seed";
 
 seed();
 
-for (const key in projectList) {
-  appendProject(Containers.project, projectList[key]);
-}
+batchAppendProject(Containers.project);
 
-
-batchAppendTodo(Containers.todo, Object.keys(projectList)[0])
+let firstKey = Object.keys(projectList)[0];
+batchAppendTodo(Containers.todo, firstKey);
+markHiddenInput(firstKey);

@@ -10,8 +10,14 @@ function makeProject(projectObj) {
   return item;
 }
 
+function markHiddenInput(projectId) {
+  Containers.todoForm.querySelector("#projectId").value = projectId;
+}
+
 function showTodos(e) {
-  batchAppendTodo(Containers.todo, e.target.dataset.projectId)
+  let projectId = e.target.dataset.projectId;
+  batchAppendTodo(Containers.todo, projectId);
+  markHiddenInput(projectId);
 }
 
 function appendProject(container, projectObj) {
@@ -20,4 +26,10 @@ function appendProject(container, projectObj) {
   container.append(project);
 }
 
-export { appendProject };
+function batchAppendProject(container) {
+  for (const key in projectList) {
+    appendProject(Containers.project, projectList[key]);
+  }
+}
+
+export { appendProject, batchAppendProject, markHiddenInput };

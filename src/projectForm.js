@@ -2,8 +2,14 @@ import Containers from "./domContainers";
 import { Project } from "./projectFactory";
 import { appendProject } from "./appendProject";
 
-function buildProject(name) {
-  appendProject(Containers.project, Project(name));
+function parsedProps(properties) {
+  return {
+    name: properties.projectName
+  };
+}
+
+function buildProject(props) {
+  appendProject(Containers.project, Project(props.name));
 }
 
 function submitNewProject(e) {
@@ -13,7 +19,7 @@ function submitNewProject(e) {
     let element = e.target.elements.item(i);
     properties[element.name] = element.value;
   }
-  buildProject(properties.projectName);
+  buildProject(parsedProps(properties));
   return false;
 }
 
