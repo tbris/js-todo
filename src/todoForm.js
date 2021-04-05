@@ -1,9 +1,14 @@
 import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
-import { appendTodo } from "./appendTodo";
+import { Todo } from "./todoFactory";
+import { buildTodo } from "./domTodo";
 
-function getRadioPriority(collection) {
-  return collection.find(item => item.checked);
+Containers.todoForm.addEventListener("submit", submitNewTodo);
+
+function submitNewTodo(e) {
+  e.preventDefault();
+  makeTodo(parsedProps(e.target.elements));
+  return false;
 }
 
 function parsedProps(target) {
@@ -16,17 +21,12 @@ function parsedProps(target) {
   };
 }
 
-function buildTodo(props) {
-  let todo = projectList[props.container].addTodo(
-    props.title, props.description, props.priority, props.date
-  );
-  appendTodo(Containers.todo, todo);
+function makeTodo(props) {
+  let todo = Todo(props.title, props.description, props.priority, props.date);
+  projectList[props.container].addTodo(todo);
+  buildTodo(todo);
 }
 
-function submitNewTodo(e) {
-  e.preventDefault();
-  buildTodo(parsedProps(e.target.elements));
-  return false;
+function getRadioPriority(collection) {
+  return collection.find(item => item.checked);
 }
-
-Containers.todoForm.addEventListener("submit", submitNewTodo);

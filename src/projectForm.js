@@ -1,26 +1,21 @@
 import Containers from "./domContainers";
 import { Project } from "./projectFactory";
-import { appendProject } from "./appendProject";
+import { buildProject } from "./domProject";
 
-function parsedProps(properties) {
-  return {
-    name: properties.projectName
-  };
-}
-
-function buildProject(props) {
-  appendProject(Containers.project, Project(props.name));
-}
+Containers.projectForm.addEventListener("submit", submitNewProject);
 
 function submitNewProject(e) {
   e.preventDefault();
-  let properties = {};
-  for (let i = 0; i < e.target.elements.length; i++) {
-    let element = e.target.elements.item(i);
-    properties[element.name] = element.value;
-  }
-  buildProject(parsedProps(properties));
+  makeProject(parsedProps(e.target.elements));
   return false;
 }
 
-Containers.projectForm.addEventListener("submit", submitNewProject);
+function parsedProps(target) {
+  return {
+    name: target.projectName.value
+  };
+}
+
+function makeProject(props) {
+  buildProject(Project(props.name));
+}

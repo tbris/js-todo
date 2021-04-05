@@ -1,12 +1,12 @@
 import Containers from "./domContainers";
 
 function toggleNav(e) {
-  if (!Containers.sidebar.style.width || Containers.sidebar.style.width == "0px") {
-    let factor = window.screen.width > 890 ? "20%" : "65%";
-    Containers.sidebar.style.width = factor;
-  } else {
-    Containers.sidebar.style.width = "0";
+  let sidebarWidth = Containers.sidebar.style.width
+  let factor = "0";
+  if (!sidebarWidth || sidebarWidth == "0px") {
+    factor = window.screen.width > 890 ? "20%" : "65%";
   }
+  Containers.sidebar.style.width = factor;
 }
 
 Containers.sidebarOpen.addEventListener("click", toggleNav);

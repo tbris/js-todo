@@ -1,13 +1,13 @@
-import Containers from "./domContainers";
-import { projectList } from "./projectFactory";
-import { batchAppendProject } from "./appendProject";
-import { batchAppendTodo } from "./appendTodo";
+import { batchAppendProject } from "./domProject";
+
 import "./projectForm";
 import "./todoForm";
 import "./domSidebar";
+import "./defaultProjectFactory";
+
 import { seed } from "./seed";
 
 seed();
 
-batchAppendProject(Containers.project);
+batchAppendProject();
 document.querySelector('[data-project-id="default"]').click();
