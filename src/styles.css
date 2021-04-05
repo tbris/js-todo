@@ -53,3 +53,26 @@ body::-webkit-scrollbar {
   padding-right: 1rem;
   flex: 1;
 }
+
+#action-sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: red;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+#action-sidebar > * {
+  transition: 0.3s;
+}
+
+#sidebar-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+}
