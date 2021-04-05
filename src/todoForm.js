@@ -2,14 +2,20 @@ import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
 import { appendTodo } from "./appendTodo";
 
-function parsedProps(properties) {
-  return {
-    container: properties.todoContainer,
-    title: properties.todoTitle,
-    description: properties.todoDescription,
-    priority: properties.todoPriority,
-    date: properties.todoDate
+function getRadioPriority(collection) {
+  return collection.find(item => item.checked);
+}
+
+function parsedProps(target) {
+  let a= {
+    container: target.todoContainer.value,
+    title: target.todoTitle.value,
+    description: target.todoDescription.value,
+    priority: getRadioPriority(Array.from(target.todoPriority)).value,
+    date: target.todoDate.value
   };
+  console.log(a)
+ return a
 }
 
 function buildTodo(props) {
@@ -21,12 +27,7 @@ function buildTodo(props) {
 
 function submitNewTodo(e) {
   e.preventDefault();
-  let properties = {};
-  for (let i = 0; i < e.target.elements.length; i++) {
-    let element = e.target.elements.item(i);
-    properties[element.name] = element.value;
-  }
-  buildTodo(parsedProps(properties));
+  buildTodo(parsedProps(e.target.elements));
   return false;
 }
 

@@ -1,10 +1,18 @@
-html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label {
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, img, form, label, ul, li {
   margin: 0;
   padding: 0;
   border: 0;
   font-size: 100%;
   font: inherit;
   vertical-align: baseline;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.form-action, [class$="-button"] {
+  font-family: inherit;
 }
 
 body {
@@ -52,7 +60,6 @@ body::-webkit-scrollbar, body *::-webkit-scrollbar {
 }
 
 .todo-item {
-  box-sizing: border-box;
   padding: 1rem;
   border-bottom: 1px solid #aaa;
   border-radius: 7px;
@@ -95,7 +102,6 @@ body::-webkit-scrollbar, body *::-webkit-scrollbar {
   background: none;
   padding: 0.5rem 1rem;
   font-size: 1.5rem;
-  font-family: inherit;
 }
 
 .sidebar-close-button {
@@ -114,7 +120,6 @@ body::-webkit-scrollbar, body *::-webkit-scrollbar {
   padding: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.8rem;
-  font-family: inherit;
 }
 
 textarea.form-action {
@@ -132,4 +137,68 @@ textarea.form-action {
 
 .form-button:hover {
   background: var(--theme-hover);
+}
+
+#todo-priority {
+  position: relative;
+  display: flex;
+  width: 70%;
+  margin: 0 auto;
+}
+
+#todo-priority > li {
+  position: relative;
+  list-style: none;
+  flex: 1;
+}
+
+#todo-priority > li > label {
+  position: relative;
+  cursor: pointer;
+}
+
+.priority-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.priority-box {
+  height: 45px;
+  border: 2px solid #c7ceea;
+}
+
+#priority-low {
+  background: #ffdac1;
+}
+
+#priority-low:hover {
+  background: #ffc299;
+}
+
+.priority-checkbox:checked + #priority-low {
+  background: #ffb380;
+}
+
+#priority-medium {
+  background: #ffb7b2;
+}
+
+#priority-medium:hover {
+  background: #ff8880;
+}
+
+.priority-checkbox:checked + #priority-medium {
+  background: #ff7066 !important;
+}
+
+#priority-high {
+  background: #ff9aa2;
+}
+
+#priority-high:hover {
+  background: #ff6673;
+}
+
+.priority-checkbox:checked + #priority-high {
+  background: #ff4d5b !important;
 }
