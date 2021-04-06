@@ -14,6 +14,7 @@ function buildProject(projectObj) {
   let project = makeProject(projectObj);
   project.addEventListener("click", showTodos);
   appendProject(project);
+  project.click();
 }
 
 function makeProject(projectObj) {
