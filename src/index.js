@@ -1,8 +1,8 @@
 import { projectList } from "./projectFactory";
 import { batchAppendProject } from "./domProject";
 
-import "./projectForm";
-import "./todoForm";
+import "./formProject";
+import "./formTodo";
 import "./domSidebar";
 import "./defaultProjectFactory";
 

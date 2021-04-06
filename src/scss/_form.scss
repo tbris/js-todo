@@ -13,12 +13,19 @@ form textarea {
   min-height: 3rem;
   max-height: 8rem;
   background: var(--textarea-color);
+  &:focus {
+    background: var(--textarea-focus-color);
+  }
 }
 
 form input[type="text"] {
   @extend %form-action;
   max-width: 80%;
   background: var(--input-color);
+  transition: 0.1s linear;
+  &:focus {
+    background: var(--input-focus-color);
+  }
 }
 
 .form-button {
@@ -31,6 +38,10 @@ form input[type="text"] {
   &:hover {
     background: var(--button-hover);
   }
+}
+
+.form-warning {
+  background: #ffbbbb !important;
 }
 
 #project-list {
