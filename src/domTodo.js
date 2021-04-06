@@ -23,11 +23,16 @@ function batchAppendTodo(projectId) {
 }
 
 function buildTodo(todoObj) {
-  let todo = makeTodo(todoObj);
+  let todo = document.createElement("div");
+  todo.classList.add("todo");
+  let item = makeTodoItem(todoObj);
+  item.addEventListener("click", toggleDesc);
+  let desc = makeTodoDesc(todoObj);
+  todo.append(item, desc);
   appendTodo(todo);
 }
 
-function makeTodo(todoObj) {
+function makeTodoItem(todoObj) {
   let item = document.createElement("div");
   item.classList.add("todo-item");
   item.append(makeTodoProperty("todo-priority", todoObj.priority));
@@ -37,11 +42,28 @@ function makeTodo(todoObj) {
   return item;
 }
 
+function makeTodoDesc(todoObj) {
+  let desc = document.createElement("div");
+  desc.classList.add("todo-description");
+  desc.textContent = todoObj.description;
+  return desc
+}
+
 function makeTodoProperty(todoClass, content) {
   let property = document.createElement("span");
   property.classList.add(todoClass);
   property.textContent = content;
   return property;
+}
+
+function toggleDesc(e) {
+  let container = e.path.find(elm => elm.classList == "todo");
+  let desc = container.querySelector(".todo-description");
+  let factor = "0";
+  if (!desc.style.height || desc.style.height == "0px") {
+    factor = "auto";
+  }
+  desc.style.height = factor;
 }
 
 function appendTodo(todoElm) {

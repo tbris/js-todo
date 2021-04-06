@@ -19,3 +19,8 @@
   padding-right: 1rem;
   flex: 1;
 }
+
+.todo-description {
+  height: 0;
+  overflow-y: hidden;
+}
