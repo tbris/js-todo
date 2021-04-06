@@ -55,16 +55,18 @@ function makeProjectRemove() {
 function showTodos(e) {
   let project = e.path.find(elm => elm.className.includes("project-item"));
   let projectId = project.dataset.projectId;
-  let hiddenField = Containers.todoForm.querySelector("#projectId");
-  if (projectId == hiddenField.value) return;
   getTodos(projectId);
-  hiddenField.value = projectId;
+  markHiddenField(projectId);
   addCurrentClass(projectId);
 }
 
 function getTodos(projectId) {
   if (projectId == "default") return appendAllTodo();
   appendProjectTodo(projectId)
+}
+
+function markHiddenField(projectId) {
+  Containers.todoForm.querySelector("#projectId").value = projectId;
 }
 
 function addCurrentClass(projectId) {
