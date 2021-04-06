@@ -1,3 +1,4 @@
+import "./scss/index.scss";
 import { projectList } from "./projectFactory";
 import { batchAppendProject } from "./domProject";
 

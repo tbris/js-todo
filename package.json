@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "webpack": "webpack --progress --watch",
-    "sass": "sass --style=compressed --watch src/scss/index.scss:dist/main.css"
+    "watch": "webpack --progress --watch"
   },
   "license": "MIT",
   "devDependencies": {
-    "sass": "^1.32.8",
+    "css-loader": "^5.2.0",
+    "mini-css-extract-plugin": "^1.4.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^11.0.1",
     "webpack": "^5.30.0",
     "webpack-cli": "^4.6.0"
   },
