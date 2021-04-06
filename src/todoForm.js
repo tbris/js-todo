@@ -23,7 +23,7 @@ function parsedProps(target) {
 
 function makeTodo(props) {
   let todo = Todo(props.title, props.description, props.priority, props.date);
-  projectList[props.container].addTodo(todo);
+  projectList[props.container == "default" ? 0 : props.container].addTodo(todo);
   buildTodo(todo);
 }
 
