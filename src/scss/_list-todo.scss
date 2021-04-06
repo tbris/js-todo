@@ -9,6 +9,7 @@
   border-bottom: 1px solid #aaa;
   border-radius: 7px;
   display: flex;
+  align-items: center;
   &:hover {
     background: var(--todo-hover);
   }
@@ -18,6 +19,21 @@
   padding-left: 1rem;
   padding-right: 1rem;
   flex: 1;
+}
+
+.todo-priority {
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 3px;
+  &-low {
+    background: #ffdac1;
+  }
+  &-medium {
+    background: #ffb7b2;
+  }
+  &-high {
+    background: #ff9aa2;
+  }
 }
 
 .todo-description {

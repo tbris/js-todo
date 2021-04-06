@@ -35,11 +35,30 @@ function buildTodo(todoObj) {
 function makeTodoItem(todoObj) {
   let item = document.createElement("div");
   item.classList.add("todo-item");
-  item.append(makeTodoProperty("todo-priority", todoObj.priority));
+  item.append(makeTodoPriority(todoObj.priority));
   item.append(makeTodoProperty("todo-title", todoObj.title));
   item.append(makeTodoProperty("todo-date", todoObj.date));
   item.tabIndex = "0";
   return item;
+}
+
+function makeTodoProperty(todoClass, content) {
+  let property = document.createElement("span");
+  property.classList.add(todoClass);
+  property.textContent = content;
+  return property;
+}
+
+let priorities = {
+  1: "todo-priority-low",
+  2: "todo-priority-medium",
+  3: "todo-priority-high"
+}
+
+function makeTodoPriority(priority) {
+  let property = document.createElement("div");
+  property.classList.add("todo-priority", priorities[priority]);
+  return property;
 }
 
 function makeTodoDesc(todoObj) {
@@ -50,13 +69,6 @@ function makeTodoDesc(todoObj) {
   descContent.textContent = todoObj.description;
   desc.append(descContent);
   return desc
-}
-
-function makeTodoProperty(todoClass, content) {
-  let property = document.createElement("span");
-  property.classList.add(todoClass);
-  property.textContent = content;
-  return property;
 }
 
 function toggleDesc(e) {

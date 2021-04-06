@@ -33,7 +33,6 @@ $hp-color: #ff9aa2;
 }
 
 #priority-low {
-  background: $lp-color;
   &:hover {
     background: darken($lp-color, 10%);
   }
@@ -43,7 +42,6 @@ $hp-color: #ff9aa2;
 }
 
 #priority-medium {
-  background: $mp-color;
   &:hover {
     background: darken($mp-color, 10%);
   }
@@ -53,7 +51,6 @@ $hp-color: #ff9aa2;
 }
 
 #priority-high {
-  background: $hp-color;
   &:hover {
     background: darken($hp-color, 10%);
   }
