@@ -19,14 +19,41 @@ function buildProject(projectObj) {
 function makeProject(projectObj) {
   let item = document.createElement("div");
   item.dataset.projectId = projectObj.id;
-  item.textContent = projectObj.name
   item.classList.add("project-item");
+  item.append(makeProjectName(projectObj.name));
+  if (projectObj.id != "default") item.append(makeProjectRemove());
   item.tabIndex = "0";
   return item;
 }
 
+function makeProjectName(name) {
+  let property = document.createElement("div");
+  property.classList.add("project-name");
+  property.textContent = name;
+  return property;
+}
+
+function makeProjectRemove() {
+  let button = document.createElement("button");
+  button.addEventListener("click", e => {
+    e.stopPropagation();
+    let todoElm = e.target.parentElement;
+    let id = todoElm.dataset.projectId;
+    delete projectList[id];
+    todoElm.remove();
+    let defaultProject = document.querySelector('[data-project-id="default"]');
+    if (todoElm.className.includes("current-project") || defaultProject.className.includes("current-project")) {
+      defaultProject.click();
+    }
+  });
+  button.classList.add("project-remove");
+  button.innerHTML = "&times;";
+  return button;
+}
+
 function showTodos(e) {
-  let projectId = e.target.dataset.projectId;
+  let project = e.path.find(elm => elm.className.includes("project-item"));
+  let projectId = project.dataset.projectId;
   getTodos(projectId);
   markHiddenInput(projectId);
   addCurrentClass(projectId);

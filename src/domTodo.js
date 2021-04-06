@@ -65,7 +65,8 @@ function makeTodoPriority(priority) {
 
 function makeTodoRemove() {
   let button = document.createElement("button");
-  button.addEventListener("click", (e) => {
+  button.addEventListener("click", e => {
+    e.stopPropagation();
     let todoElm = e.path.find(elm => elm.className == "todo");
     let ids = todoElm.id.split("#");
     delete projectList[ids[0]].todos[ids[1]];

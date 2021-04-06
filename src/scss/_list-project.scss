@@ -6,11 +6,13 @@
 }
 
 .project-item {
+  position: relative;
   cursor: pointer;
   padding: 1rem 0;
   font-size: 1.5rem;
   text-align: center;
   transition: 0.3s;
+  overflow: hidden;
   &:hover {
     background: var(--project-hover);
   }
@@ -21,4 +23,16 @@
   &:hover {
     background: var(--project-current-hover);
   }
+}
+
+.project-name {
+  display: inline-block;
+  max-width: 60%;
+  overflow: scroll hidden;
+}
+
+.project-remove {
+  position: absolute;
+  right: 0;
+  margin-right: 0.5rem;
 }
