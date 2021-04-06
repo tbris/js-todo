@@ -23,4 +23,10 @@
 .todo-description {
   height: 0;
   overflow-y: hidden;
+  transition: 0.2s;
+}
+
+.todo-desc-content {
+  padding: 1rem 1.5rem;
+  line-height: 1.5rem;
 }

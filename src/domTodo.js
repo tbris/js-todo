@@ -45,7 +45,10 @@ function makeTodoItem(todoObj) {
 function makeTodoDesc(todoObj) {
   let desc = document.createElement("div");
   desc.classList.add("todo-description");
-  desc.textContent = todoObj.description;
+  let descContent = document.createElement("div");
+  descContent.classList.add("todo-desc-content");
+  descContent.textContent = todoObj.description;
+  desc.append(descContent);
   return desc
 }
 
@@ -59,11 +62,8 @@ function makeTodoProperty(todoClass, content) {
 function toggleDesc(e) {
   let container = e.path.find(elm => elm.classList == "todo");
   let desc = container.querySelector(".todo-description");
-  let factor = "0";
-  if (!desc.style.height || desc.style.height == "0px") {
-    factor = "auto";
-  }
-  desc.style.height = factor;
+  let cont = desc.querySelector(".todo-desc-content");
+  desc.style.height = Math.abs(desc.clientHeight - cont.clientHeight) + "px";
 }
 
 function appendTodo(todoElm) {
