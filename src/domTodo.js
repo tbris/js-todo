@@ -18,12 +18,13 @@ function appendAllTodo() {
 function batchAppendTodo(projectId) {
   let project = projectList[projectId];
   for (const key in project.todos) {
-    buildTodo(project.todos[key]);
+    buildTodo(project.todos[key], key, projectId);
   }
 }
 
-function buildTodo(todoObj) {
+function buildTodo(todoObj, todoId, projectId) {
   let todo = document.createElement("div");
+  todo.id = projectId + "#" + todoId;
   todo.classList.add("todo");
   let item = makeTodoItem(todoObj);
   item.addEventListener("click", toggleDesc);
@@ -38,6 +39,7 @@ function makeTodoItem(todoObj) {
   item.append(makeTodoPriority(todoObj.priority));
   item.append(makeTodoProperty("todo-title", todoObj.title));
   item.append(makeTodoProperty("todo-date", todoObj.date));
+  item.append(makeTodoRemove());
   item.tabIndex = "0";
   return item;
 }
@@ -59,6 +61,19 @@ function makeTodoPriority(priority) {
   let property = document.createElement("div");
   property.classList.add("todo-priority", priorities[priority]);
   return property;
+}
+
+function makeTodoRemove() {
+  let button = document.createElement("button");
+  button.addEventListener("click", (e) => {
+    let todoElm = e.path.find(elm => elm.className == "todo");
+    let ids = todoElm.id.split("#");
+    delete projectList[ids[0]].todos[ids[1]];
+    todoElm.remove();
+  });
+  button.classList.add("todo-remove");
+  button.innerHTML = "&times;";
+  return button;
 }
 
 function makeTodoDesc(todoObj) {

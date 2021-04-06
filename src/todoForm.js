@@ -23,8 +23,9 @@ function parsedProps(target) {
 
 function makeTodo(props) {
   let todo = Todo(props.title, props.description, props.priority, props.date);
-  projectList[props.container == "default" ? 0 : props.container].addTodo(todo);
-  buildTodo(todo);
+  let projectId = props.container == "default" ? 0 : props.container;
+  let todoId = projectList[projectId].addTodo(todo);
+  buildTodo(todo, todoId, projectId);
 }
 
 function getRadioPriority(collection) {

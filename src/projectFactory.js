@@ -7,7 +7,9 @@ let projectList = {};
 
 const projectProto = {
   addTodo(todoObj) {
-    this.todos[this.count++] = todoObj;
+    let idx = this.count++
+    this.todos[idx] = todoObj;
+    return idx
   },
   removeTodo(id) {
     delete this.todos[id];
