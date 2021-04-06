@@ -1,6 +1,6 @@
 import "./scss/index.scss";
 import flatpickr from "flatpickr";
-import "../node_modules/flatpickr/dist/flatpickr.min.css";
+import "../node_modules/flatpickr/dist/themes/confetti.css";
 import { projectList } from "./projectFactory";
 import { batchAppendProject } from "./domProject";
 
@@ -16,4 +16,9 @@ seed();
 batchAppendProject();
 document.querySelector('[data-project-id="default"]').click();
 
-flatpickr('[name="todoDate"]', {});
+flatpickr('[name="todoDate"]', {
+  altInput: true,
+  altFormat: "F j, Y, h:i K",
+  minDate: "today",
+  enableTime: true,
+});
