@@ -62,8 +62,12 @@ function makeTodoProperty(todoClass, content) {
 function toggleDesc(e) {
   let container = e.path.find(elm => elm.classList == "todo");
   let desc = container.querySelector(".todo-description");
-  let cont = desc.querySelector(".todo-desc-content");
-  desc.style.height = Math.abs(desc.clientHeight - cont.clientHeight) + "px";
+  if (desc.clientHeight) {
+    desc.style.height = 0;
+  } else {
+    let cont = desc.querySelector(".todo-desc-content");
+    desc.style.height = cont.clientHeight + "px";
+  }
 }
 
 function appendTodo(todoElm) {
