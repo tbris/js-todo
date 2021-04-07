@@ -1,8 +1,8 @@
 import Todo from "./todoFactory";
 
-export { Project, projectList, projectProto };
+export { Project, projectList };
 
-let projectCount = 1;
+let projectCount = 0;
 let projectList = {};
 
 const projectProto = {
@@ -22,5 +22,5 @@ const Project = (name) => {
     id: projectId, name, todos: {}, count: 0
   });
   projectList[projectId] = project;
-  return project
+  return projectId;
 };

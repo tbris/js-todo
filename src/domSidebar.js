@@ -1,4 +1,4 @@
-import Containers from "./domContainers";
+import { Containers } from "./domUtilities";
 
 function toggleNav(e) {
   let sidebarWidth = Containers.sidebar.style.width

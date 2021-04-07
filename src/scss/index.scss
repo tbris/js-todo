@@ -17,6 +17,7 @@ body {
 #application {
   max-width: 600px;
   margin: 0 auto;
+  background: var(--theme);
 }
 
 @import "reset", "lists", "sidebar";

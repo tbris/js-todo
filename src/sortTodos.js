@@ -1,24 +1,32 @@
-import Containers from "./domContainers";
+import { Containers, DefaultProject } from "./domUtilities";
 import { projectList } from "./projectFactory";
-import { buildTodo } from "./domTodo";
-import { appendProjectTodo, appendAllTodo } from "./domTodo";
+import { buildTodo } from "./domTodoStrc";
+import { appendProjectTodo, appendAllTodo, appendTodo } from "./domTodo";
 
 export { sortTodos };
 
 function sortTodos(factor, projectId) {
   Containers.todo.innerHTML = "";
-  if (projectId == "default") {
-    if (factor == "none") return appendAllTodo();
-    let sorted = sortDefBy(factor)
-    if (factor == "priority") sorted = sorted.reverse();
-    sorted.forEach(batch => buildTodo(...batch));
+  if (projectId == DefaultProject.id) {
+    validateDefault(factor);
   } else {
-    if (factor == "none") return appendProjectTodo(projectId);
-    let todos = projectList[projectId].todos;
-    let sorted = sortBy(factor, todos);
-    if (factor == "priority") sorted = sorted.reverse();
-    sorted.forEach(key => buildTodo(todos[key], key, projectId))
+    validateProject(factor, projectId);
   }
+}
+
+function validateDefault(factor) {
+  if (factor == "none") return appendAllTodo();
+  let sorted = sortDefBy(factor)
+  if (factor == "priority") sorted = sorted.reverse();
+  sorted.forEach(batch => appendTodo(buildTodo(...batch)));
+}
+
+function validateProject(factor, projectId) {
+  if (factor == "none") return appendProjectTodo(projectId);
+  let todos = projectList[projectId].todos;
+  let sorted = sortBy(factor, todos);
+  if (factor == "priority") sorted = sorted.reverse();
+  sorted.forEach(key => appendTodo(buildTodo(todos[key], key, projectId)));
 }
 
 function sortDefBy(factor) {

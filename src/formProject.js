@@ -1,5 +1,5 @@
-import Containers from "./domContainers";
-import { Project } from "./projectFactory";
+import { Containers } from "./domUtilities";
+import { Project, projectList } from "./projectFactory";
 import { buildProject } from "./domProject";
 import { submitNew } from "./formUtilities";
 
@@ -11,5 +11,5 @@ Containers.projectForm.addEventListener("submit", e => {
 });
 
 function makeProject(props) {
-  buildProject(Project(props.projectName));
+  buildProject(projectList[Project(props.projectName)]);
 }

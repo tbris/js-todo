@@ -1,21 +1,22 @@
-import "./scss/index.scss";
 import flatpickr from "flatpickr";
 import "../node_modules/flatpickr/dist/themes/confetti.css";
-import { projectList } from "./projectFactory";
+import "./scss/index.scss";
 import { batchAppendProject } from "./domProject";
 
 import "./formProject";
 import "./formTodo";
 import "./domSidebar";
 import "./domSort";
-import "./defaultProjectFactory";
+
+import { DefaultProject } from "./domUtilities";
+DefaultProject.initialize()
 
 import { seed } from "./seed";
 
 seed();
 
 batchAppendProject();
-document.querySelector('[data-project-id="default"]').click();
+DefaultProject.element().click();
 
 flatpickr('[name="todoDate"]', {
   altInput: true,
