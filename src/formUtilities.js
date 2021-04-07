@@ -29,6 +29,7 @@ function evaluate(props, reqProps, elements) {
 }
 
 function alertWarning(element) {
+  if (element.type == "hidden") element = element.nextElementSibling;
   element.classList.add("form-warning");
   setTimeout(() => element.classList.remove("form-warning"), 2000);
 }

@@ -6,15 +6,15 @@ export { buildProject, batchAppendProject };
 
 function batchAppendProject() {
   for (const key in projectList) {
-    buildProject(projectList[key]);
+    buildProject(projectList[key], true);
   }
 }
 
-function buildProject(projectObj) {
+function buildProject(projectObj, load=false) {
   let project = makeProject(projectObj);
   project.addEventListener("click", showTodos);
   appendProject(project);
-  project.click();
+  if (!load) project.click();
 }
 
 function makeProject(projectObj) {
@@ -55,6 +55,7 @@ function makeProjectRemove() {
 function showTodos(e) {
   let project = e.path.find(elm => elm.className.includes("project-item"));
   let projectId = project.dataset.projectId;
+  Containers.sortChanger.dataset.sortFactor = "date";
   getTodos(projectId);
   markHiddenField(projectId);
   addCurrentClass(projectId);
