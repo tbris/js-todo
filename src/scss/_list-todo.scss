@@ -1,0 +1,73 @@
+#todo-list {
+  max-height: 90%;
+  overflow-y: scroll;
+}
+
+.todo-item {
+  cursor: pointer;
+  padding: 1rem;
+  border-bottom: 1px solid #aaa;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  &:hover {
+    background: var(--todo-hover);
+  }
+}
+
+.todo-title {
+  padding: 0 1rem;
+  flex: 1;
+  overflow: hidden;
+  max-height: 1rem;
+}
+
+.todo-priority {
+  height: 1.7rem;
+  width: 1.7rem;
+  border-radius: 3px;
+  &-low {
+    background: #ffdac1;
+  }
+  &-medium {
+    background: #ffb7b2;
+  }
+  &-high {
+    background: #ff9aa2;
+  }
+}
+
+.todo-description {
+  height: 0;
+  overflow-y: hidden;
+  transition: 0.2s;
+}
+
+.todo-desc-content {
+  padding: 1rem 1.5rem;
+  line-height: 1.5rem;
+}
+
+.todo-remove {
+  margin-left: 1rem;
+  padding: 0.4rem;
+  font-size: 1.1rem;
+  transition: 0.3s;
+  border-radius: 10px;
+  color: #aaa;
+  &:hover {
+    background: #ccddcc;
+    color: #004000;
+  }
+}
+
+.desc-content {
+  user-select: text;
+}
+
+.todo-date {
+  color: #555;
+  font-stretch: condensed;
+  margin-bottom: 0.3rem;
+  font-size: 0.8rem;
+}

@@ -1,6 +1,5 @@
 const path = require("path");
-const extCSS = require("mini-css-extract-plugin");
-const miniCSS = require("css-minimizer-webpack-plugin");
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: "production",
@@ -9,23 +8,19 @@ module.exports = {
     filename: "main.js",
     path: path.resolve(__dirname, "dist")
   },
+  plugins: [
+    new MiniCSSExtractPlugin()
+  ],
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        test: /\.(css|scss)$/i,
         use: [
-          extCSS.loader,
-          "css-loader"
+          MiniCSSExtractPlugin.loader,
+          "css-loader",
+          "sass-loader"
         ]
       }
-    ]
-  },
-  plugins: [
-    new extCSS()
-  ],
-  optimization: {
-    minimizer: [
-      new miniCSS
     ]
   }
 }

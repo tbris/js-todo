@@ -1,0 +1,23 @@
+body {
+  --theme: #fff;
+  --todo-hover: #e6e6e6;
+  --input-color: #f4f9eb;
+  --input-focus-color: #e2f0cb;
+  --textarea-color: #d7f4e9;
+  --textarea-focus-color: #b5ead7;
+  --button-hover: #ccc;
+  --project-hover: #ccc;
+  --project-current: #b3b3b3;
+  --project-current-hover: #808080;
+  --priority-low: #ffdac1;
+  --priority-medium: #ffb7b2;
+  --priority-high: #ff9aa2;
+}
+
+#application {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--theme);
+}
+
+@import "reset", "lists", "sidebar";

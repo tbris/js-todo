@@ -1,0 +1,39 @@
+#topbar {
+  position: sticky;
+}
+
+#action-sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background: var(--theme);
+  overflow-x: hidden;
+  transition: 0.5s;
+  form {
+    margin: 1rem;
+  }
+}
+
+#sidebar-open, #sidebar-close, #sort-changer {
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+#sort-changer {
+  float: right;
+  transition: 0.3s;
+  &:focus {
+    transform: rotate(180deg);
+  }
+}
+
+#sidebar-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@import "form";
