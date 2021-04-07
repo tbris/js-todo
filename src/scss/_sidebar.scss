@@ -24,6 +24,10 @@
 
 #sort-changer {
   float: right;
+  transition: 0.3s;
+  &:focus {
+    transform: rotate(180deg);
+  }
 }
 
 #sidebar-close {

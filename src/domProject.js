@@ -1,6 +1,7 @@
 import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
 import { appendProjectTodo, appendAllTodo } from "./domTodo";
+import { sortTodos } from "./sortTodos";
 
 export { buildProject, batchAppendProject };
 
@@ -55,8 +56,7 @@ function makeProjectRemove() {
 function showTodos(e) {
   let project = e.path.find(elm => elm.className.includes("project-item"));
   let projectId = project.dataset.projectId;
-  Containers.sortChanger.dataset.sortFactor = "date";
-  getTodos(projectId);
+  sortTodos(Containers.sortChanger.dataset.sortFactor, projectId);
   markHiddenField(projectId);
   addCurrentClass(projectId);
 }
