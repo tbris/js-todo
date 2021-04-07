@@ -19,7 +19,7 @@ document.querySelector('[data-project-id="default"]').click();
 
 flatpickr('[name="todoDate"]', {
   altInput: true,
-  altFormat: "F j, Y, h:i K",
+  altFormat: "D M j, Y, h:i K",
   minDate: "today",
   enableTime: true,
 });
