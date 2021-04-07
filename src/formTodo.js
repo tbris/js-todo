@@ -14,7 +14,7 @@ Containers.todoForm.addEventListener("submit", e => {
 
 function makeTodo(props) {
   let todo = Todo(props.todoTitle, props.todoDescription, props.todoPriority,
-                  props.todoDate);
+                  new Date(props.todoDate));
   let projectId = props.todoContainer == "default" ? 0 : props.todoContainer;
   let todoId = projectList[projectId].addTodo(todo);
   buildTodo(todo, todoId, projectId);

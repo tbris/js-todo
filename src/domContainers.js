@@ -5,7 +5,8 @@ const Containers = {
   todoForm: document.getElementById("new-todo"),
   sidebar: document.getElementById("action-sidebar"),
   sidebarClose: document.getElementById("sidebar-close"),
-  sidebarOpen: document.getElementById("sidebar-open")
+  sidebarOpen: document.getElementById("sidebar-open"),
+  sortChanger: document.getElementById("sort-changer")
 }
 
 export default Containers;

@@ -7,6 +7,7 @@ import { batchAppendProject } from "./domProject";
 import "./formProject";
 import "./formTodo";
 import "./domSidebar";
+import "./domSort";
 import "./defaultProjectFactory";
 
 import { seed } from "./seed";
