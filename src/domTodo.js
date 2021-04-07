@@ -1,3 +1,5 @@
+import { format } from "date-fns";
+
 import Containers from "./domContainers";
 import { projectList } from "./projectFactory";
 
@@ -38,7 +40,7 @@ function makeTodoItem(todoObj) {
   item.classList.add("todo-item");
   item.append(makeTodoPriority(todoObj.priority));
   item.append(makeTodoProperty("todo-title", todoObj.title));
-  item.append(makeTodoProperty("todo-date", todoObj.date));
+ // item.append(makeTodoProperty("todo-date", format(new Date(todoObj.date), "EEE MMM d, yyyy p")));
   item.append(makeTodoRemove());
   item.tabIndex = "0";
   return item;
@@ -82,9 +84,17 @@ function makeTodoDesc(todoObj) {
   desc.classList.add("todo-description");
   let descContent = document.createElement("div");
   descContent.classList.add("todo-desc-content");
-  descContent.textContent = todoObj.description;
+  descContent.append(makeDescProperty("todo-date", format(new Date(todoObj.date), "EEE MMM d, yyyy, p")));
+  descContent.append(makeDescProperty("desc-content", todoObj.description));
   desc.append(descContent);
   return desc
+}
+
+function makeDescProperty(className, content) {
+  let item = document.createElement("div");
+  item.classList.add(className);
+  item.textContent = content;
+  return item;
 }
 
 function toggleDesc(e) {
