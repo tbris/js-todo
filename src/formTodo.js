@@ -4,6 +4,7 @@ import { Todo } from "./todoFactory";
 import { buildTodo } from "./domTodoStrc";
 import { appendTodo } from "./domTodo";
 import { submitNew } from "./formUtilities";
+import { storeOne } from "./storage";
 
 let todoProps = ["todoTitle" ,"todoDescription",
                  "todoPriority", "todoDate"];
@@ -20,5 +21,6 @@ function makeTodo(props) {
   );
   let projectId = Root.currentProject().dataset.projectId;
   let todoId = projectList[projectId].addTodo(todo);
+  storeOne(projectId, todoId);
   appendTodo(buildTodo(todo, todoId, projectId));
 }

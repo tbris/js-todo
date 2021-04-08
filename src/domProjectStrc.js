@@ -2,16 +2,19 @@ import { Containers, DefaultProject, Root } from "./domUtilities";
 import { projectList } from "./projectFactory";
 import { appendProjectTodo, appendAllTodo } from "./domTodo";
 import { sortTodos } from "./sortTodos";
+import { storageRemove } from "./storage";
 
-export { makeProject, showTodos };
+export { buildProject, showTodos };
 
-function makeProject(projectObj) {
+function buildProject(projectObj) {
   let item = document.createElement("div");
   item.dataset.projectId = projectObj.id;
   item.classList.add("project-item");
   item.append(makeProjectName(projectObj.name));
   if (projectObj.id != DefaultProject.id) item.append(makeProjectRemove());
   item.tabIndex = "0";
+
+  item.addEventListener("click", showTodos);
   return item;
 }
 
@@ -35,6 +38,7 @@ function removeProject(e) {
   let project = e.target.parentElement;
   let id = project.dataset.projectId;
   delete projectList[id];
+  storageRemove(id);
   project.remove();
   focusOtherProject(project);
 }

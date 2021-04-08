@@ -27,6 +27,7 @@ const DefaultProject = {
     this.element = function() {
       return document.querySelector(`[data-project-id="${this.id}"`);
     };
+    return id
   }
 }
 

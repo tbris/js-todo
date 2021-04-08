@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { projectList } from "./projectFactory";
+import { removeOne } from "./storage";
 
 export { buildTodo };
 
@@ -60,6 +61,7 @@ function removeTodo(e) {
   e.stopPropagation();
   let todoElm = e.path.find(elm => elm.className == "todo");
   let ids = todoElm.id.split("#");
+  removeOne(ids[0], ids[1]);
   delete projectList[ids[0]].todos[ids[1]];
   todoElm.remove();
 }

@@ -1,19 +1,14 @@
 import { Containers } from "./domUtilities";
 import { projectList } from "./projectFactory";
-import { makeProject, showTodos } from "./domProjectStrc";
+import { buildProject, showTodos } from "./domProjectStrc";
 
-export { buildProject, batchAppendProject };
+export { batchAppendProject, appendProject };
 
 function batchAppendProject() {
   for (const key in projectList) {
-    buildProject(projectList[key], true);
+    let project = buildProject(projectList[key]);
+    appendProject(project)
   }
-}
-
-function buildProject(projectObj) {
-  let project = makeProject(projectObj);
-  project.addEventListener("click", showTodos);
-  appendProject(project);
 }
 
 function appendProject(projectElm) {
