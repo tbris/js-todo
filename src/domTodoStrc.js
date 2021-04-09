@@ -53,7 +53,7 @@ function makeTodoItem(todoObj) {
 }
 
 function toggleDesc(e) {
-  const container = e.path.find((elm) => elm.classList === 'todo');
+  const container = e.path.find((elm) => elm.className === 'todo');
   const desc = container.querySelector('.todo-description');
   if (desc.clientHeight) {
     desc.style.height = 0;

@@ -10,7 +10,7 @@ function sortDefBy(factor) {
       props.push([projectList[i].todos[y], y, i]);
     });
   });
-  return props.sort((a, b) => a[0][factor] - b[0][factor]);
+  return props.sort((a, b) => new Date(a[0][factor]) - new Date(b[0][factor]));
 }
 
 function validateDefault(factor) {
@@ -38,7 +38,7 @@ function validateProject(factor, projectId) {
 
 function sortTodos(factor, projectId) {
   Containers.todo.innerHTML = '';
-  if (projectId === DefaultProject.id) {
+  if (+projectId === DefaultProject.id) {
     validateDefault(factor);
   } else {
     validateProject(factor, projectId);

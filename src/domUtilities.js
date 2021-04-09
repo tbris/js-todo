@@ -21,7 +21,7 @@ const Root = {
 };
 
 const DefaultProject = {
-  initialize: () => {
+  initialize() {
     const id = Project('default');
     this.id = id;
     this.element = () => {

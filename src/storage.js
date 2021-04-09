@@ -7,7 +7,7 @@ const dataSeparator = '#@$ZmmKIPCcnV';
 const todoSeparator = '#@$0BVLeiXSMb';
 
 function storageInit(projectId) {
-  const data = (projectId === DefaultProject.id) + dataSeparator + projectList[projectId].name;
+  const data = (+projectId === DefaultProject.id) + dataSeparator + projectList[projectId].name;
   localStorage.setItem(`JSTODO-${projectId}`, data);
 }
 
@@ -49,7 +49,7 @@ function storeOne(projectId, todoId) {
 
 function removeOne(projectId, todoId) {
   const [firstPart, todos] = getStoredItem(projectId, todoId);
-  todos.splice(todos.findIndex((e) => e.split(dataSeparator)[0] === todoId), 1);
+  todos.splice(todos.findIndex((e) => +e.split(dataSeparator)[0] === todoId), 1);
   restoreItem(projectId, firstPart, todos);
 }
 
