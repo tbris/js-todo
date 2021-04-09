@@ -1,102 +1,103 @@
-import { format } from "date-fns";
-import { projectList } from "./projectFactory";
-import { removeOne } from "./storage";
-
-export { buildTodo };
-
-function buildTodo(todoObj, todoId, projectId) {
-  let todo = document.createElement("div");
-  todo.id = projectId + "#" + todoId;
-  todo.classList.add("todo");
-
-  let item = makeTodoItem(todoObj);
-  item.addEventListener("click", toggleDesc);
-
-  let desc = makeTodoDesc(todoObj);
-  todo.append(item, desc);
-  return todo
-}
-
-function makeTodoItem(todoObj) {
-  let item = document.createElement("div");
-  item.classList.add("todo-item");
-  item.append(
-    makeItemProperty(todoPriority, todoObj.priority),
-    makeItemProperty(todoTitle, todoObj.title),
-    makeTodoRemove()
-  );
-  item.tabIndex = "0";
-  return item;
-}
+import { format } from 'date-fns';
+import { projectList } from './projectFactory';
+import { removeOne } from './storage';
 
 function makeItemProperty(fname, content) {
-  let property = document.createElement("span");
+  const property = document.createElement('span');
   fname(property, content);
   return property;
 }
 
-function todoTitle(element, content) {
-  element.classList.add("todo-title");
-  element.textContent = content;
-}
-
 function todoPriority(element, content) {
-  let priorities = {
-    1: "todo-priority-low",
-    2: "todo-priority-medium",
-    3: "todo-priority-high"
-  }
-  element.classList.add("todo-priority", priorities[content]);
+  const priorities = {
+    1: 'todo-priority-low',
+    2: 'todo-priority-medium',
+    3: 'todo-priority-high',
+  };
+  element.classList.add('todo-priority', priorities[content]);
 }
 
-function makeTodoRemove() {
-  let button = document.createElement("button");
-  button.addEventListener("click", removeTodo);
-  button.classList.add("todo-remove");
-  button.innerHTML = "&times;";
-  return button;
+function todoTitle(element, content) {
+  const container = element;
+  container.classList.add('todo-title');
+  container.textContent = content;
 }
 
 function removeTodo(e) {
   e.stopPropagation();
-  let todoElm = e.path.find(elm => elm.className == "todo");
-  let ids = todoElm.id.split("#");
+  const todoElm = e.path.find((elm) => elm.className === 'todo');
+  const ids = todoElm.id.split('#');
   removeOne(ids[0], ids[1]);
   delete projectList[ids[0]].todos[ids[1]];
   todoElm.remove();
 }
 
-function makeTodoDesc(todoObj) {
-  let desc = document.createElement("div");
-  desc.classList.add("todo-description");
-  let descContent = document.createElement("div");
-  descContent.classList.add("todo-desc-content");
-  descContent.append(
-    makeDescProperty(
-      "todo-date", format(new Date(todoObj.date), "EEE MMM d, yyyy, p")
-    ),
-    makeDescProperty(
-      "desc-content", todoObj.description
-    )
+function makeTodoRemove() {
+  const button = document.createElement('button');
+  button.addEventListener('click', removeTodo);
+  button.classList.add('todo-remove');
+  button.innerHTML = '&times;';
+  return button;
+}
+
+function makeTodoItem(todoObj) {
+  const item = document.createElement('div');
+  item.classList.add('todo-item');
+  item.append(
+    makeItemProperty(todoPriority, todoObj.priority),
+    makeItemProperty(todoTitle, todoObj.title),
+    makeTodoRemove(),
   );
-  desc.append(descContent);
-  return desc
+  item.tabIndex = '0';
+  return item;
+}
+
+function toggleDesc(e) {
+  const container = e.path.find((elm) => elm.classList === 'todo');
+  const desc = container.querySelector('.todo-description');
+  if (desc.clientHeight) {
+    desc.style.height = 0;
+  } else {
+    desc.style.height = `${
+      desc.querySelector('.todo-desc-content').clientHeight
+    }px`;
+  }
 }
 
 function makeDescProperty(className, content) {
-  let item = document.createElement("div");
+  const item = document.createElement('div');
   item.classList.add(className);
   item.textContent = content;
   return item;
 }
 
-function toggleDesc(e) {
-  let container = e.path.find(elm => elm.classList == "todo");
-  let desc = container.querySelector(".todo-description");
-  if (desc.clientHeight) {
-    desc.style.height = 0;
-  } else {
-    let cont = desc.querySelector(".todo-desc-content");
-    desc.style.height = cont.clientHeight + "px";
-  }
+function makeTodoDesc(todoObj) {
+  const desc = document.createElement('div');
+  desc.classList.add('todo-description');
+  const descContent = document.createElement('div');
+  descContent.classList.add('todo-desc-content');
+  descContent.append(
+    makeDescProperty(
+      'todo-date',
+      format(new Date(todoObj.date), 'EEE MMM d, yyyy, p'),
+    ),
+    makeDescProperty('desc-content', todoObj.description),
+  );
+  desc.append(descContent);
+  return desc;
 }
+
+function buildTodo(todoObj, todoId, projectId) {
+  const todo = document.createElement('div');
+  todo.id = `${projectId}#${todoId}`;
+  todo.classList.add('todo');
+
+  const item = makeTodoItem(todoObj);
+  item.addEventListener('click', toggleDesc);
+
+  const desc = makeTodoDesc(todoObj);
+  todo.append(item, desc);
+  return todo;
+}
+
+export default buildTodo;
